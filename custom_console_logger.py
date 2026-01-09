@@ -1,0 +1,28 @@
+import logging
+import os
+from datetime import datetime
+
+def setup_daily_logger():
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    log_dir = os.path.join(base_dir, 'logs')
+    os.makedirs(log_dir, exist_ok=True)
+
+    current_time = datetime.now().strftime("%m_%d_%y_%I_%M_%p")
+    log_file = os.path.join(log_dir, f"{current_time}.log")
+
+    logging.basicConfig(
+        level=logging.DEBUG,
+        filemode='w',
+        filename=log_file,
+        format='%(asctime)s - %(levelname)s - %(filename)s:%(lineno)d - %(message)s',
+        encoding='utf-8'
+    )
+
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.debug)
+    console_formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(filename)s:%(lineno)d - %(message)s')
+    console_handler.setFormatter(console_formatter)
+
+    logging.getLogger().addHandler(console_handler)
+
+    return logging.getLogger(__name__)
