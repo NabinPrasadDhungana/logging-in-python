@@ -19,7 +19,7 @@ def setup_daily_logger():
     )
 
     console_handler = logging.StreamHandler()
-    console_handler.setLevel(logging.debug)
+    console_handler.setLevel(logging.DEBUG)
     console_formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(filename)s:%(lineno)d - %(message)s')
     console_handler.setFormatter(console_formatter)
 
