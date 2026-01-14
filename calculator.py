@@ -35,32 +35,38 @@ while True:
         b = float(input("Enter the second number: "))
 
         if user_input == '1':
-            print(f"Sum of {a} and {b} is ", add(a, b))
-            logger.info('Addition performed')
+            result = add(a, b)
+            print(f"Sum of {a} and {b} is ", result)
+            logger.info('Addition performed: %s + %s = %s', a, b, result)
 
         elif user_input == '2':
-            print(f"Subtraction of {a} and {b} is ", subtract(a, b))
-            logger.info('Subtraction performed')
+            result = subtract(a, b)
+            print(f"Subtraction of {a} and {b} is ", result)
+            logger.info('Subtraction performed: %s - %s = %s', a, b, result)
 
         elif user_input == '3':
-            print(f"Multiplication of {a} and {b} is ", multiply(a, b))
-            logger.info('Multiplication performed')
+            result = multiply(a, b)
+            print(f"Multiplication of {a} and {b} is ", result)
+            logger.info('Multiplication performed: %s * %s = %s', a, b, result)
 
         elif user_input == '4':
             try:
-                print(f"Division of {a} and {b} is ", divide(a, b))
-                logger.info('Division performed')
+                result = divide(a, b)
+                print(f"Division of {a} and {b} is ", result)
+                logger.info('Division performed: %s / %s = %s', a, b, result)
             except ZeroDivisionError:
                 print("Tried to divide a number by Zero (0)")
-                logger.error("Tried to divide a number by Zero (0)")
+                logger.exception("Tried to divide a number by Zero (0)")
 
         elif user_input == '5':
-            print(f"Power of {a} and {b} is ", power(a, b))
-            logger.info('Indices performed')
+            result = power(a, b)
+            print(f"Power of {a} and {b} is ", result)
+            logger.info('Power performed: %s ** %s = %s', a, b, result)
 
         else:
-            print(f"Root of {a} and {b} is ", root(a, b))
-            logger.info('Root performed')
+            result = root(a, b)
+            print(f"Root of {a} and {b} is ", result)
+            logger.info('Root performed: %s root %s = %s', a, b, result)
         
         choice = input("Do you want to continue? (y/n): ")
         if choice == 'n':
