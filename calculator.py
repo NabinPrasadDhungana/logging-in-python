@@ -20,7 +20,7 @@ def root(a, b):
     return a ** (1/b)
 
 logger = setup_logger()
-logger.debug("=" * 40)
+logger.debug('\n' + "=" * 40)
 logger.info("Calculator intantiated!")
 logger.debug("=" * 40)
 
@@ -31,8 +31,13 @@ while True:
     user_input = input("Enter what you want to do: (1/2/3/4/5/6)")
 
     if user_input in ['1', '2', '3', '4', '5', '6']:
-        a = float(input("Enter the first number: "))
-        b = float(input("Enter the second number: "))
+        try:
+            a = float(input("Enter the first number: "))
+            b = float(input("Enter the second number: "))
+        except ValueError:
+            print("Invalid input! Please enter numeric values.")
+            logger.error("Non-numeric input provided for numbers.")
+            continue
 
         if user_input == '1':
             result = add(a, b)
@@ -75,5 +80,5 @@ while True:
         logger.info("User opted to continue calculation.")
     else:
         print("Invalid input!")
-        logger.error("User input is invalid.")
+        logger.error("User input is invalid: %s", user_input)
         
